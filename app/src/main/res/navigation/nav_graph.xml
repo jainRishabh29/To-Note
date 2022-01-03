@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.tonote.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_fabFragment"
+            app:destination="@id/fabFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down"/>
+        <action
+            android:id="@+id/action_mainFragment_to_openNoteFragment"
+            app:destination="@id/openNoteFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fabFragment"
+        android:name="com.example.tonote.fragments.FabFragment"
+        android:label="fragment_fab"
+        tools:layout="@layout/fragment_fab" >
+        <action
+            android:id="@+id/action_fabFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/openNoteFragment"
+        android:name="com.example.tonote.fragments.OpenNoteFragment"
+        android:label="OpenNoteFragment" >
+        <action
+            android:id="@+id/action_openNoteFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

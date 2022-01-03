@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentView"
+    android:background="@color/backgroundColor"
+    tools:context=".fragments.FabFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
+        android:fitsSystemWindows="true"
+        app:elevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="0dp"
+            android:background="@color/backgroundColor">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                />
+
+            <ImageView
+                android:id="@+id/colorPaletteIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_baseline_color_lens_24"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@null"
+        android:fontFamily="@font/roboto"
+        android:hint="Title"
+        android:maxLines="2"
+        android:paddingStart="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/HintText"
+        android:textCursorDrawable="@color/white"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/saveButton"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="8dp"
+        android:background="@null"
+        android:gravity="top|start"
+        android:hint="Note"
+        android:fontFamily="@font/roboto"
+        android:inputType="textMultiLine"
+        android:paddingStart="12dp"
+        android:scrollbars="vertical"
+        android:textColor="@color/white"
+        android:textColorHint="@color/HintText"
+        android:textCursorDrawable="@color/white"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/round_button"
+        android:text="Save"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/highlightColor" />
+
+</RelativeLayout>
