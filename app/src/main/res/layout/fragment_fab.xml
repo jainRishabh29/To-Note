@@ -53,13 +53,13 @@
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
         android:background="@null"
+        android:fontFamily="@font/roboto"
         android:hint="Title"
         android:maxLines="2"
-        android:fontFamily="@font/roboto"
         android:paddingStart="12dp"
         android:textColor="@color/white"
         android:textColorHint="@color/HintText"
-        android:textCursorDrawable="@color/white"
+        android:textCursorDrawable="@null"
         android:textSize="24sp" />
 
     <EditText
@@ -81,7 +81,7 @@
         android:scrollbars="vertical"
         android:textColor="@color/white"
         android:textColorHint="@color/HintText"
-        android:textCursorDrawable="@color/white"
+        android:textCursorDrawable="@null"
         android:textSize="20sp" />
 
     <Button

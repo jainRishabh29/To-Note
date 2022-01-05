@@ -8,12 +8,9 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tonote.R
-import com.example.tonote.database.Notes
 
 class ColorListAdapter(private val context: Context, private val listener: IColorListAdapter, var isSelected: Int) :
     RecyclerView.Adapter<ColorListAdapter.ColorListViewHolder>()  {
@@ -21,28 +18,20 @@ class ColorListAdapter(private val context: Context, private val listener: IColo
     private val colorList = listOf("#D5D7FF", "#cabbe9", "#6c5fa7", "#e77c7c", "#293462" , "#1a2639")
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorListViewHolder {
-        val viewHolder =
-            ColorListViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.color_chooser_item_view, parent, false)
-            )
-        viewHolder.color.setOnClickListener {
-            listener.onItemClicked(colorList[viewHolder.adapterPosition])
-        }
-        return viewHolder
+        return ColorListViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.color_chooser_item_view, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: ColorListViewHolder, position: Int) {
         val color = colorList[position]
         holder.color.setBackgroundColor(Color.parseColor(color))
-        holder.relativeLayout.setOnClickListener {
-            isSelected = if(isSelected==position)
-                -1
-            else
-                position
-
+        holder.color.setOnClickListener {
+            listener.onItemClicked(colorList[position])
+            isSelected = position
             notifyDataSetChanged()
         }
-
         if(isSelected==position){
             holder.checkIcon.visibility = VISIBLE
         }else{
