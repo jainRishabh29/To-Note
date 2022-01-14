@@ -3,6 +3,7 @@ package com.example.tonote.viewModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.tonote.database.Notes
 import com.example.tonote.database.RoomDB
@@ -28,5 +29,8 @@ class MainViewModel constructor(application: Application) : AndroidViewModel(app
     }
     fun updateNote(note: Notes) = viewModelScope.launch(Dispatchers.IO)  {
         repository.updateNote(note)
+    }
+    fun getNotes(sortNumber:Int): LiveData<List<Notes>> {
+        return allNotes
     }
 }

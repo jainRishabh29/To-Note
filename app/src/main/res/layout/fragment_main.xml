@@ -16,6 +16,7 @@
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -33,6 +34,15 @@
                 android:textSize="18dp"
                 android:letterSpacing="0.07"
                 />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/sortIcon"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_marginEnd="12dp"-->
+<!--                android:src="@drawable/ic_baseline_sort_24"-->
+<!--                />-->
 
         </androidx.appcompat.widget.Toolbar>
 

@@ -24,6 +24,8 @@ import com.example.tonote.databinding.FragmentFabBinding
 import com.example.tonote.databinding.FragmentMainBinding
 import com.example.tonote.viewModel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import java.text.SimpleDateFormat
+import java.util.*
 
 class FabFragment : Fragment() , ColorListAdapter.IColorListAdapter {
 
@@ -52,9 +54,10 @@ class FabFragment : Fragment() , ColorListAdapter.IColorListAdapter {
                 hexColorOfNote = defaultCardColor
             }
             Log.d("batao" , hexColorOfNote)
+            val dateCreated = SimpleDateFormat("yyyy MMM d, hh:mm a").format(Date())
 
             if ((binding.title.text != null && binding.desc.text != null) && (binding.title.text.toString() != "" && binding.desc.text.toString() != "")) {
-                val note = Notes(0,binding.title.text.toString(), binding.desc.text.toString(), hexColorOfNote)
+                val note = Notes(0,binding.title.text.toString(), binding.desc.text.toString(), hexColorOfNote, dateCreated)
                 viewModel.insertNote(note)
 //                val bundle = Bundle()
 //                contentArray[0] = binding.title.text.toString()
@@ -90,4 +93,5 @@ class FabFragment : Fragment() , ColorListAdapter.IColorListAdapter {
         cardView!!.setCardBackgroundColor(Color.parseColor(colorName))
 
     }
+
 }

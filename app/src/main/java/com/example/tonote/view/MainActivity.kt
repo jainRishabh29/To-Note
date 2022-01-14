@@ -1,12 +1,11 @@
-package com.example.tonote
+package com.example.tonote.view
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
-import androidx.navigation.findNavController
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.example.tonote.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
