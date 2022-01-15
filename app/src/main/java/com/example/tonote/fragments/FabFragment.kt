@@ -55,9 +55,10 @@ class FabFragment : Fragment() , ColorListAdapter.IColorListAdapter {
             }
             Log.d("batao" , hexColorOfNote)
             val dateCreated = SimpleDateFormat("yyyy MMM d, hh:mm a").format(Date())
+            val dateEdited = dateCreated
 
             if ((binding.title.text != null && binding.desc.text != null) && (binding.title.text.toString() != "" && binding.desc.text.toString() != "")) {
-                val note = Notes(0,binding.title.text.toString(), binding.desc.text.toString(), hexColorOfNote, dateCreated)
+                val note = Notes(0,binding.title.text.toString(), binding.desc.text.toString(), hexColorOfNote, dateCreated, dateEdited)
                 viewModel.insertNote(note)
 //                val bundle = Bundle()
 //                contentArray[0] = binding.title.text.toString()

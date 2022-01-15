@@ -8,7 +8,7 @@ import com.example.tonote.database.NotesDao
 
 class MainRepo(private val notesDao: NotesDao) {
 
-    val allNotes : LiveData<List<Notes>> = notesDao.getAllNotes()
+    lateinit var allNotes : LiveData<List<Notes>>
 
     suspend fun insert(notes: Notes){
         notesDao.insert(notes)
@@ -20,22 +20,22 @@ class MainRepo(private val notesDao: NotesDao) {
         notesDao.updateNote(notes)
     }
 
-//    fun getAllNotes(sortNumber:Int):LiveData<List<Notes>>{
-//        when(sortNumber){
-//            0 ->{
-//                allNotes = notesDao.getNotesByDCA()
-//            }
-//            1->{
-//                allNotes = notesDao.getNotesByDCA()
-//            }
-//            2->{
-//                allNotes = notesDao.getNotesByDCA()
-//            }
-//            3->{
-//                allNotes = notesDao.getNotesByDCA()
-//            }
-//        }
-//        return allNotes
-//    }
+    fun getAllNotes(sortNumber:Int):LiveData<List<Notes>>{
+        when(sortNumber){
+            0 ->{
+                allNotes = notesDao.getNotesByDCD()
+            }
+            1->{
+                allNotes = notesDao.getNotesByDCA()
+            }
+            2->{
+                allNotes = notesDao.getNotesByDED()
+            }
+            3->{
+                allNotes = notesDao.getNotesByDEA()
+            }
+        }
+        return allNotes
+    }
 
 }

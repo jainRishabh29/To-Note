@@ -10,5 +10,6 @@ class Notes(
     @ColumnInfo(name = "Title") val title: String,
     @ColumnInfo(name = "desc") val desc: String,
     @ColumnInfo(name = "colorOfNote") val colorOfNote: String,
-    @ColumnInfo(name = "dateCreated") val dateCreated: String
+    @ColumnInfo(name = "dateCreated") val dateCreated: String,
+    @ColumnInfo(name = "dateEdited") val dateEdited: String
 )

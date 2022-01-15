@@ -108,6 +108,7 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
         contentArray.add(2, notes.colorOfNote)
         contentArray.add(3, notes.id.toString())
         contentArray.add(4, notes.dateCreated)
+        contentArray.add(5, notes.dateEdited)
         bundle.putStringArrayList("Content", contentArray)
         findNavController().navigate(R.id.action_mainFragment_to_openNoteFragment, bundle)
     }
@@ -116,13 +117,13 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
         binding.toolbar.inflateMenu(R.menu.menu)
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.dateCreatedAsc -> {
+                R.id.dateCreatedDesc -> {
                     it.isChecked = true
                     localKeyStorage.saveValue(LocalKeyStorage.sortNumber,0)
                     findNavController().navigate(R.id.action_mainFragment_self)
                     true
                 }
-                R.id.dateCreatedDesc -> {
+                R.id.dateCreatedAsc -> {
                     it.isChecked = true
                     localKeyStorage.saveValue(LocalKeyStorage.sortNumber,1)
                     findNavController().navigate(R.id.action_mainFragment_self)

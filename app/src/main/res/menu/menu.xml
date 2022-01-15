@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:id="@+id/menuGroup" android:checkableBehavior="single">
-        <item android:id="@+id/dateCreatedAsc"
-            android:title="Date Created(Ascend)"
-            app:showAsAction="never"/>
-
         <item android:id="@+id/dateCreatedDesc"
             android:title="Date Created(Descend)"
+            app:showAsAction="never"/>
+
+        <item android:id="@+id/dateCreatedAsc"
+            android:title="Date Created(Ascend)"
             app:showAsAction="never"/>
 
         <item android:id="@+id/descend"

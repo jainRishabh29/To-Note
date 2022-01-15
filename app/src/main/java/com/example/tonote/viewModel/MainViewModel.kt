@@ -14,12 +14,11 @@ import kotlinx.coroutines.launch
 class MainViewModel constructor(application: Application) : AndroidViewModel(application){
 
     private val repository : MainRepo
-    val allNotes : LiveData<List<Notes>>
+    lateinit var allNotes : LiveData<List<Notes>>
 
     init {
         val dao = RoomDB.getDatabase(application).getNotesDao()
         repository = MainRepo(dao)
-        allNotes = repository.allNotes
     }
     fun insertNote(note:Notes) = viewModelScope.launch(Dispatchers.IO){
         repository.insert(note)
@@ -31,6 +30,6 @@ class MainViewModel constructor(application: Application) : AndroidViewModel(app
         repository.updateNote(note)
     }
     fun getNotes(sortNumber:Int): LiveData<List<Notes>> {
-        return allNotes
+        return repository.getAllNotes(sortNumber)
     }
 }

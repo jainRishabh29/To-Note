@@ -32,7 +32,7 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
     lateinit var viewModel: MainViewModel
     private lateinit var bottomSheet : BottomSheetDialog
     var idOfNote: Int = 0
-
+    private lateinit var dateCreated : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +49,8 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
             idOfNote = contentOfNote[3].toInt()
             binding.toolbar.setBackgroundColor(Color.parseColor(contentOfNote[2]))
             binding.parentView.setBackgroundColor(Color.parseColor(contentOfNote[2]))
-            binding.dateCreated.text = contentOfNote[4]
+            binding.dateEdited.text = contentOfNote[4]
+            dateCreated = contentOfNote[5]
         }
         binding.saveButton.setOnClickListener {
 
@@ -65,7 +66,7 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
             val dateUpdated = SimpleDateFormat("yyyy MMM d, hh:mm a").format(Date())
 
             if ((binding.title.text != null && binding.desc.text != null) && (binding.title.text.toString() != "" && binding.desc.text.toString() != "")) {
-                val note = Notes(idOfNote, binding.title.text.toString(), binding.desc.text.toString(),hexColorOfNote, dateUpdated)
+                val note = Notes(idOfNote, binding.title.text.toString(), binding.desc.text.toString(),hexColorOfNote, dateCreated, dateUpdated)
                 Log.d("batao" , note.title)
                 viewModel.updateNote(note)
                 findNavController().navigate(R.id.action_openNoteFragment_to_mainFragment)
