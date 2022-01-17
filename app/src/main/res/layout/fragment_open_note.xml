@@ -39,6 +39,28 @@
                 android:textColor="@color/cardTextColor"
                 />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end">
+
+            <ImageView
+                android:id="@+id/icdelete"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="12dp"
+                android:shadowColor="@color/white"
+                android:src="@drawable/ic_baseline_delete_24" />
+
+            <ImageView
+                android:id="@+id/icinfo"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="12dp"
+                android:shadowColor="@color/white"
+                android:src="@drawable/ic_baseline_info_24" />
+
             <ImageView
                 android:id="@+id/colorPaletteIcon"
                 android:layout_width="wrap_content"
@@ -47,6 +69,8 @@
                 android:layout_marginEnd="12dp"
                 android:src="@drawable/ic_baseline_color_lens_24"
                 />
+
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -63,6 +87,7 @@
         android:fontFamily="@font/roboto"
         android:hint="Title"
         android:maxLines="2"
+        android:minHeight="48dp"
         android:paddingStart="12dp"
         android:textColor="@color/white"
         android:textColorHint="@color/HintText"
@@ -76,13 +101,13 @@
         android:layout_above="@+id/saveButton"
         android:layout_below="@id/title"
         android:layout_marginLeft="6dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:layout_marginRight="6dp"
         android:layout_marginBottom="8dp"
         android:background="@null"
+        android:fontFamily="@font/roboto"
         android:gravity="top|start"
         android:hint="Note"
-        android:fontFamily="@font/roboto"
         android:inputType="textMultiLine"
         android:paddingStart="12dp"
         android:scrollbars="vertical"

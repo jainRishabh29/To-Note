@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -22,6 +23,7 @@ import com.example.tonote.database.Notes
 import com.example.tonote.databinding.FragmentOpenNoteBinding
 import com.example.tonote.viewModel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -99,5 +101,11 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
         parentViewColor.setBackgroundColor(Color.parseColor(colorName))
         cardView!!.setCardBackgroundColor(Color.parseColor(colorName))
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        requireActivity().findViewById<ExtendedFloatingActionButton>(R.id.fabButton).visibility = View.GONE
+        (activity as AppCompatActivity).supportActionBar?.hide()
     }
 }

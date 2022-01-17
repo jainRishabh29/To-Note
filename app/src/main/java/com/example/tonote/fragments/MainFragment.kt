@@ -8,6 +8,8 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import android.widget.Toolbar
+import androidx.annotation.MenuRes
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.AndroidViewModel
@@ -29,6 +31,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.PopupMenu
 import com.example.tonote.util.LocalKeyStorage
 
 
@@ -39,19 +42,17 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
     private val binding get() = _binding!!
     private lateinit var noteRVAdapter: NoteRVAdapter
     var allNotes: ArrayList<Notes> = ArrayList()
-    var sortNumber : Int = 1
+    lateinit var toolbar : androidx.appcompat.widget.Toolbar
     lateinit var localKeyStorage: LocalKeyStorage
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
-
-        createToolbarSortIcon()
 
         binding.rView.apply {
             layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
@@ -60,24 +61,6 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
         }
 
         localKeyStorage = LocalKeyStorage(requireContext())
-        when(localKeyStorage.getValue(LocalKeyStorage.sortNumber)){
-            0 ->{
-                Log.d("batao", "1")
-                binding.toolbar.menu.getItem(0).isChecked = true
-            }
-            1->{
-                Log.d("batao", "2")
-                binding.toolbar.menu.getItem(1).isChecked = true
-            }
-            2->{
-                Log.d("batao", "3")
-                binding.toolbar.menu.getItem(2).isChecked = true
-            }
-            3->{
-                Log.d("batao", "3")
-                binding.toolbar.menu.getItem(3).isChecked = true
-            }
-        }
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.getNotes(localKeyStorage.getValue(LocalKeyStorage.sortNumber)!!).observe(viewLifecycleOwner, Observer {
@@ -87,7 +70,7 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
             }
         })
 
-        binding.fabButton.setOnClickListener {
+        requireActivity().findViewById<ExtendedFloatingActionButton>(R.id.fabButton).setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_fabFragment)
         }
 
@@ -113,50 +96,69 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
         findNavController().navigate(R.id.action_mainFragment_to_openNoteFragment, bundle)
     }
 
-    private fun createToolbarSortIcon() {
-        binding.toolbar.inflateMenu(R.menu.menu)
-        binding.toolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.dateCreatedDesc -> {
-                    it.isChecked = true
-                    localKeyStorage.saveValue(LocalKeyStorage.sortNumber,0)
-                    findNavController().navigate(R.id.action_mainFragment_self)
-                    true
-                }
-                R.id.dateCreatedAsc -> {
-                    it.isChecked = true
-                    localKeyStorage.saveValue(LocalKeyStorage.sortNumber,1)
-                    findNavController().navigate(R.id.action_mainFragment_self)
-                    true
-                }
-                R.id.descend -> {
-                    it.isChecked = true
-                    localKeyStorage.saveValue(LocalKeyStorage.sortNumber,2)
-                    findNavController().navigate(R.id.action_mainFragment_self)
-                    true
-                }
-                R.id.ascend -> {
-                    it.isChecked = true
-                    localKeyStorage.saveValue(LocalKeyStorage.sortNumber,3)
-                    findNavController().navigate(R.id.action_mainFragment_self)
-                    true
-                }
-                else -> super.onOptionsItemSelected(it)
+
+
+    override fun onStart() {
+        super.onStart()
+        requireActivity().findViewById<ExtendedFloatingActionButton>(R.id.fabButton).visibility = View.VISIBLE
+        (activity as AppCompatActivity).supportActionBar?.show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+        when (localKeyStorage.getValue(LocalKeyStorage.sortNumber)) {
+            0 -> {
+                Log.d("batao", "1")
+                menu.getItem(0).isChecked = true
+            }
+            1 -> {
+                Log.d("batao", "2")
+                menu.getItem(1).isChecked = true
+            }
+            2 -> {
+                Log.d("batao", "3")
+               menu.getItem(2).isChecked = true
+            }
+            3 -> {
+                Log.d("batao", "3")
+               menu.getItem(3).isChecked = true
             }
         }
+        super.onCreateOptionsMenu(menu, inflater)
     }
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.dateCreated, R.id.descend, R.id.Ascend -> {
-//                item.isChecked = !item.isChecked
-//                true
-//            }
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
-//
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.menu, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.dateCreatedDesc -> {
+                item.isChecked = true
+                localKeyStorage.saveValue(LocalKeyStorage.sortNumber, 0)
+                    findNavController().navigate(R.id.action_mainFragment_self)
+                true
+            }
+            R.id.dateCreatedAsc -> {
+                item.isChecked = true
+                localKeyStorage.saveValue(LocalKeyStorage.sortNumber, 1)
+                    findNavController().navigate(R.id.action_mainFragment_self)
+                true
+            }
+            R.id.descend -> {
+                item.isChecked = true
+                localKeyStorage.saveValue(LocalKeyStorage.sortNumber, 2)
+                    findNavController().navigate(R.id.action_mainFragment_self)
+                true
+            }
+            R.id.ascend -> {
+                item.isChecked = true
+                localKeyStorage.saveValue(LocalKeyStorage.sortNumber, 3)
+                    findNavController().navigate(R.id.action_mainFragment_self)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 }
