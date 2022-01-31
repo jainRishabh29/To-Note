@@ -46,7 +46,31 @@ class MainActivity : AppCompatActivity() {
         drawerToggle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
-//        findViewById<NavigationView>(R.id.nav_view).setNavigationItemSelectedListener(this)
+        findViewById<NavigationView>(R.id.nav_view).setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.setting -> {
+                    Log.d("batao" , "clicked1")
+                    true
+                }
+                R.id.rateUs -> {
+                    Log.d("batao" , "clicked2")
+                    true
+                }
+                R.id.Hnotes -> {
+                    Log.d("batao" , "clicked3")
+                    true
+                }
+                R.id.aboutUs -> {
+                    Log.d("batao" , "clicked4")
+                    true
+                }
+                R.id.help -> {
+                    Log.d("batao" , "clicked5")
+                    true
+                }
+                else -> true
+            }
+        }
 
 
     }

@@ -58,6 +58,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.31"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    //passwordLibrary
+    implementation 'com.hanks:passcodeview:0.1.2'
+
     
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 }
