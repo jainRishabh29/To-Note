@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 android {
@@ -60,6 +61,8 @@ dependencies {
 
     //passwordLibrary
     implementation 'com.hanks:passcodeview:0.1.2'
+
+    implementation("com.google.android.gms:play-services-oss-licenses:17.0.0")
 
     
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"

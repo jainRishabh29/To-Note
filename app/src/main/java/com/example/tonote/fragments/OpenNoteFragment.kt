@@ -21,6 +21,7 @@ import com.example.tonote.R
 import com.example.tonote.adapter.ColorListAdapter
 import com.example.tonote.database.Notes
 import com.example.tonote.databinding.FragmentOpenNoteBinding
+import com.example.tonote.util.LocalKeyStorage
 import com.example.tonote.viewModel.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -36,6 +37,7 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
     var idOfNote: Int = 0
     private lateinit var dateCreated : String
     var isNoteHidden : Boolean = false
+    lateinit var localKeyStorage: LocalKeyStorage
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +46,12 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
         // Inflate the layout for this fragment
         _binding = FragmentOpenNoteBinding.inflate(inflater, container, false)
         val view = binding.root
+        localKeyStorage = LocalKeyStorage(requireContext())
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val contentOfNote = arguments?.getStringArrayList("Content")
+        binding.toolbar.inflateMenu(R.menu.menu_open_fragment)
+        binding.toolbar.overflowIcon = resources.getDrawable(R.drawable.ic_baseline_more_vert_24)
+
         if(!contentOfNote.isNullOrEmpty()) {
             binding.title.setText(contentOfNote[0])
             binding.desc.setText(contentOfNote[1])
@@ -55,7 +61,34 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
             binding.dateEdited.text = contentOfNote[4]
             dateCreated = contentOfNote[5]
             isNoteHidden = contentOfNote[6].toBoolean()
+            binding.toolbar.menu.getItem(2).isChecked = contentOfNote[6].toBoolean()
+
         }
+
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.isHidden -> {
+                    if(localKeyStorage.getValue(LocalKeyStorage.passcode)!=0) {
+                        it.isChecked = !it.isChecked
+                        isNoteHidden = !isNoteHidden
+                    }else{
+                        // tell the user to set the password
+                        Toast.makeText(context,"Coming Soon..",Toast.LENGTH_SHORT).show()
+                    }
+                    true
+                }
+                R.id.details ->{
+                    // open popup for details
+                    true
+                }
+                R.id.delete -> {
+                    // delete this note
+                    true
+                }
+                else -> true
+            }
+        }
+
         binding.saveButton.setOnClickListener {
 
             val colorOfNote = binding.parentView.background as Drawable

@@ -32,7 +32,16 @@
             android:title="About Us"
             app:showAsAction="never" />
     </group>
-    <group android:id="@+id/grp5">
+
+<!--    <group android:id="@+id/grp5">-->
+<!--        <item-->
+<!--            android:id="@+id/license"-->
+<!--            android:icon="@drawable/ic_twotone_feed_24"-->
+<!--            android:title="License"-->
+<!--            app:showAsAction="never" />-->
+<!--    </group>-->
+
+    <group android:id="@+id/grp6">
         <item
             android:id="@+id/help"
             android:icon="@drawable/ic_baseline_help_24"

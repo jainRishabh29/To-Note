@@ -44,29 +44,29 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end">
 
-            <ImageView
-                android:id="@+id/icdelete"
-                android:layout_width="25dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="12dp"
-                android:shadowColor="@color/white"
-                android:src="@drawable/ic_baseline_delete_24" />
+<!--            <ImageView-->
+<!--                android:id="@+id/icdelete"-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="20dp"-->
+<!--                android:layout_marginEnd="12dp"-->
+<!--                android:shadowColor="@color/white"-->
+<!--                android:src="@drawable/ic_baseline_delete_24" />-->
 
-            <ImageView
-                android:id="@+id/icinfo"
-                android:layout_width="25dp"
-                android:layout_height="20dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="12dp"
-                android:shadowColor="@color/white"
-                android:src="@drawable/ic_baseline_info_24" />
+<!--            <ImageView-->
+<!--                android:id="@+id/icinfo"-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="20dp"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:layout_marginEnd="12dp"-->
+<!--                android:shadowColor="@color/white"-->
+<!--                android:src="@drawable/ic_baseline_info_24" />-->
 
             <ImageView
                 android:id="@+id/colorPaletteIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/ic_baseline_color_lens_24"
                 />
 

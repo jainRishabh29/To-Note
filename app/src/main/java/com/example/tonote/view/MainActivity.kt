@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.tonote.R
 import com.example.tonote.util.LocalKeyStorage
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -70,6 +71,10 @@ class MainActivity : AppCompatActivity() {
                     Log.d("batao" , "clicked5")
                     true
                 }
+//                R.id.license -> {
+//                    startActivity(Intent(this, OssLicensesMenuActivity::class.java))
+//                    true
+//                }
                 else -> true
             }
         }
