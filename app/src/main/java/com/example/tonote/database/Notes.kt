@@ -11,5 +11,6 @@ class Notes(
     @ColumnInfo(name = "desc") val desc: String,
     @ColumnInfo(name = "colorOfNote") val colorOfNote: String,
     @ColumnInfo(name = "dateCreated") val dateCreated: String,
-    @ColumnInfo(name = "dateEdited") val dateEdited: String
+    @ColumnInfo(name = "dateEdited") val dateEdited: String,
+    @ColumnInfo(name = "hidden") val isHidden: Boolean
 )

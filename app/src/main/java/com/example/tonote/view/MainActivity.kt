@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.Hnotes -> {
                     Log.d("batao" , "clicked3")
+                    navController.navigate(R.id.action_mainFragment_to_passwordFragment)
+                    drawerLayout.close()
                     true
                 }
                 R.id.aboutUs -> {

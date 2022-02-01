@@ -20,4 +20,6 @@
     <color name="cardColor">#1f1e1f</color>
     <color name="cardTextColor">#DEFFFFFF</color>
     <color name="statusBarColor">#131213</color>
+    <color name="correctStateColor">#008000</color>
+    <color name="incorrectStateColor">#ff0033</color>
 </resources>

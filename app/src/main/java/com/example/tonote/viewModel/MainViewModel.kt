@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class MainViewModel constructor(application: Application) : AndroidViewModel(application){
 
     private val repository : MainRepo
-    lateinit var allNotes : LiveData<List<Notes>>
+//    lateinit var allNotes : LiveData<List<Notes>>
 
     init {
         val dao = RoomDB.getDatabase(application).getNotesDao()
@@ -31,5 +31,8 @@ class MainViewModel constructor(application: Application) : AndroidViewModel(app
     }
     fun getNotes(sortNumber:Int): LiveData<List<Notes>> {
         return repository.getAllNotes(sortNumber)
+    }
+    fun getHiddenNotes(): LiveData<List<Notes>> {
+        return repository.getHiddenNotes()
     }
 }

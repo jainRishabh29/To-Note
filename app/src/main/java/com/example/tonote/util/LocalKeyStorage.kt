@@ -11,6 +11,7 @@ class LocalKeyStorage(context: Context) {
 
     companion object {
         const val sortNumber = "SortNumber"
+        const val passcode = "passcode"
     }
 
     fun saveValue(key: String, value: Int) {

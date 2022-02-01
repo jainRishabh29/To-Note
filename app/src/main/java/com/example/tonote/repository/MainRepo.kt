@@ -9,6 +9,7 @@ import com.example.tonote.database.NotesDao
 class MainRepo(private val notesDao: NotesDao) {
 
     lateinit var allNotes : LiveData<List<Notes>>
+    lateinit var allHiddenNotes : LiveData<List<Notes>>
 
     suspend fun insert(notes: Notes){
         notesDao.insert(notes)
@@ -36,6 +37,11 @@ class MainRepo(private val notesDao: NotesDao) {
             }
         }
         return allNotes
+    }
+
+    fun getHiddenNotes() : LiveData<List<Notes>>{
+        allHiddenNotes = notesDao.getHiddenNotes()
+        return allHiddenNotes
     }
 
 }

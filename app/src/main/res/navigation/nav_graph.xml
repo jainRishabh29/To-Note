@@ -29,6 +29,9 @@
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_mainFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
     </fragment>
     <fragment
         android:id="@+id/fabFragment"
@@ -50,5 +53,34 @@
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.tonote.fragments.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_hiddenNoteFragment"
+            app:destination="@id/hiddenNoteFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/passwordFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/hiddenNoteFragment"
+        android:name="com.example.tonote.fragments.HiddenNoteFragment"
+        android:label="fragment_hidden_note"
+        tools:layout="@layout/fragment_hidden_note" >
+        <action
+            android:id="@+id/action_hiddenNoteFragment_to_openNoteFragment"
+            app:destination="@id/openNoteFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down"/>
+        <action
+            android:id="@+id/action_hiddenNoteFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

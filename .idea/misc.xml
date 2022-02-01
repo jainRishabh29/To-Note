@@ -13,13 +13,16 @@
         <entry key="..\:/android/ToNote/app/src/main/res/layout/color_chooser_item_view.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_fab.xml" value="0.2421875" />
+        <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_hidden_note.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_main.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_open_note.xml" value="0.2421875" />
+        <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_password.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/header.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/notes_item.xml" value="0.21296296296296297" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/side_layout.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/switch_menu.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/menu/menu.xml" value="0.2421875" />
+        <entry key="..\:/android/ToNote/app/src/main/res/menu/menu2.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/menu/sidemenu.xml" value="0.2421875" />
       </map>
     </option>

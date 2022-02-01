@@ -92,6 +92,7 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
         contentArray.add(3, notes.id.toString())
         contentArray.add(4, notes.dateCreated)
         contentArray.add(5, notes.dateEdited)
+        contentArray.add(6, notes.isHidden.toString())
         bundle.putStringArrayList("Content", contentArray)
         findNavController().navigate(R.id.action_mainFragment_to_openNoteFragment, bundle)
     }

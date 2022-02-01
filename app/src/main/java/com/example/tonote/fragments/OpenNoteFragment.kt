@@ -35,6 +35,7 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
     private lateinit var bottomSheet : BottomSheetDialog
     var idOfNote: Int = 0
     private lateinit var dateCreated : String
+    var isNoteHidden : Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +54,7 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
             binding.parentView.setBackgroundColor(Color.parseColor(contentOfNote[2]))
             binding.dateEdited.text = contentOfNote[4]
             dateCreated = contentOfNote[5]
+            isNoteHidden = contentOfNote[6].toBoolean()
         }
         binding.saveButton.setOnClickListener {
 
@@ -67,8 +69,8 @@ class OpenNoteFragment : Fragment() , ColorListAdapter.IColorListAdapter{
             Log.d("batao" , hexColorOfNote)
             val dateUpdated = SimpleDateFormat("yyyy MMM d, hh:mm a").format(Date())
 
-            if ((binding.title.text != null && binding.desc.text != null) && (binding.title.text.toString() != "" && binding.desc.text.toString() != "")) {
-                val note = Notes(idOfNote, binding.title.text.toString(), binding.desc.text.toString(),hexColorOfNote, dateCreated, dateUpdated)
+            if ((binding.title.text != null || binding.desc.text != null) && (binding.title.text.toString() != "" || binding.desc.text.toString() != "")) {
+                val note = Notes(idOfNote, binding.title.text.toString(), binding.desc.text.toString(),hexColorOfNote, dateCreated, dateUpdated,isNoteHidden)
                 Log.d("batao" , note.title)
                 viewModel.updateNote(note)
                 findNavController().navigate(R.id.action_openNoteFragment_to_mainFragment)
