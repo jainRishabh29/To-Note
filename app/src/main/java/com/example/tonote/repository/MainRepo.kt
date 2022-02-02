@@ -44,4 +44,8 @@ class MainRepo(private val notesDao: NotesDao) {
         return allHiddenNotes
     }
 
+     fun searchNote(searchQuery:String):LiveData<List<Notes>>{
+        return notesDao.searchNote(searchQuery)
+    }
+
 }

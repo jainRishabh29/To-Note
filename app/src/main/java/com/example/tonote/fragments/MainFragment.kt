@@ -2,6 +2,7 @@ package com.example.tonote.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -32,6 +33,8 @@ import java.util.*
 import kotlin.collections.ArrayList
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.SearchView.*
 import com.example.tonote.util.LocalKeyStorage
 
 
@@ -42,7 +45,7 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
     private val binding get() = _binding!!
     private lateinit var noteRVAdapter: NoteRVAdapter
     var allNotes: ArrayList<Notes> = ArrayList()
-    lateinit var toolbar : androidx.appcompat.widget.Toolbar
+    lateinit var toolbar: androidx.appcompat.widget.Toolbar
     lateinit var localKeyStorage: LocalKeyStorage
 
     @SuppressLint("SimpleDateFormat")
@@ -63,16 +66,18 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
         localKeyStorage = LocalKeyStorage(requireContext())
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.getNotes(localKeyStorage.getValue(LocalKeyStorage.sortNumber)!!).observe(viewLifecycleOwner, Observer {
-            it?.let {
-                allNotes = it as ArrayList
-                noteRVAdapter.setNotes(allNotes)
-            }
-        })
+        viewModel.getNotes(localKeyStorage.getValue(LocalKeyStorage.sortNumber)!!)
+            .observe(viewLifecycleOwner, Observer {
+                it?.let {
+                    allNotes = it as ArrayList
+                    noteRVAdapter.setNotes(allNotes)
+                }
+            })
 
-        requireActivity().findViewById<ExtendedFloatingActionButton>(R.id.fabButton).setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_fabFragment)
-        }
+        requireActivity().findViewById<ExtendedFloatingActionButton>(R.id.fabButton)
+            .setOnClickListener {
+                findNavController().navigate(R.id.action_mainFragment_to_fabFragment)
+            }
 
 
         return view
@@ -98,10 +103,10 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
     }
 
 
-
     override fun onStart() {
         super.onStart()
-        requireActivity().findViewById<ExtendedFloatingActionButton>(R.id.fabButton).visibility = View.VISIBLE
+        requireActivity().findViewById<ExtendedFloatingActionButton>(R.id.fabButton).visibility =
+            View.VISIBLE
         (activity as AppCompatActivity).supportActionBar?.show()
     }
 
@@ -118,11 +123,11 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
             }
             2 -> {
                 Log.d("batao", "3")
-               menu.getItem(2).isChecked = true
+                menu.getItem(2).isChecked = true
             }
             3 -> {
                 Log.d("batao", "3")
-               menu.getItem(3).isChecked = true
+                menu.getItem(3).isChecked = true
             }
         }
         super.onCreateOptionsMenu(menu, inflater)
@@ -133,25 +138,29 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
             R.id.dateCreatedDesc -> {
                 item.isChecked = true
                 localKeyStorage.saveValue(LocalKeyStorage.sortNumber, 0)
-                    findNavController().navigate(R.id.action_mainFragment_self)
+                findNavController().navigate(R.id.action_mainFragment_self)
                 true
             }
             R.id.dateCreatedAsc -> {
                 item.isChecked = true
                 localKeyStorage.saveValue(LocalKeyStorage.sortNumber, 1)
-                    findNavController().navigate(R.id.action_mainFragment_self)
+                findNavController().navigate(R.id.action_mainFragment_self)
                 true
             }
             R.id.descend -> {
                 item.isChecked = true
                 localKeyStorage.saveValue(LocalKeyStorage.sortNumber, 2)
-                    findNavController().navigate(R.id.action_mainFragment_self)
+                findNavController().navigate(R.id.action_mainFragment_self)
                 true
             }
             R.id.ascend -> {
                 item.isChecked = true
                 localKeyStorage.saveValue(LocalKeyStorage.sortNumber, 3)
-                    findNavController().navigate(R.id.action_mainFragment_self)
+                findNavController().navigate(R.id.action_mainFragment_self)
+                true
+            }
+            R.id.searchIcon -> {
+                findNavController().navigate(R.id.action_mainFragment_to_searchFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)

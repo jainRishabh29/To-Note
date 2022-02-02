@@ -36,5 +36,6 @@ interface NotesDao {
     @Query("Select * from notes_table where hidden=1 order by dateCreated DESC")
     fun getHiddenNotes() : LiveData<List<Notes>>
 
-
+    @Query("select * from notes_table where Title like:searchQuery OR description like:searchQuery order by dateCreated ASC")
+    fun searchNote(searchQuery:String) : LiveData<List<Notes>>
 }

@@ -35,4 +35,7 @@ class MainViewModel constructor(application: Application) : AndroidViewModel(app
     fun getHiddenNotes(): LiveData<List<Notes>> {
         return repository.getHiddenNotes()
     }
+    fun searchNote(searchQuery:String) : LiveData<List<Notes>> {
+        return repository.searchNote(searchQuery)
+    }
 }
