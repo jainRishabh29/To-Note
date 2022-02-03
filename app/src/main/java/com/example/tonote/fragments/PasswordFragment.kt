@@ -36,7 +36,7 @@ class PasswordFragment : Fragment() {
         localKeyStorage = LocalKeyStorage(requireContext())
 
         binding.passcodeView.apply {
-            if (localKeyStorage.getValue(LocalKeyStorage.passcode)==0){
+            if (localKeyStorage.getPasscodeValue(LocalKeyStorage.passcode)==null){
                 passcodeType = PasscodeView.PasscodeViewType.TYPE_SET_PASSCODE
                 listener = object : PasscodeView.PasscodeViewListener{
                     override fun onFail() {
@@ -45,7 +45,7 @@ class PasswordFragment : Fragment() {
 
                     override fun onSuccess(number: String?) {
                         if (number != null) {
-                            localKeyStorage.saveValue(LocalKeyStorage.passcode,number.toInt())
+                            localKeyStorage.savePasscodeValue(LocalKeyStorage.passcode,number)
                             //Toast.makeText(context,"Success to",Toast.LENGTH_SHORT).show()
                             // Now navigate to another fragment
                             if(localKeyStorage.getValue(LocalKeyStorage.isFromOtherFragment)==1){
@@ -62,6 +62,7 @@ class PasswordFragment : Fragment() {
                                     contentArray.add(6, "true")
                                 }
                                 bundle.putStringArrayList("Content", contentArray)
+                                localKeyStorage.saveValue(LocalKeyStorage.isFromOtherFragment,0)
                                 findNavController().navigate(R.id.action_passwordFragment_to_openNoteFragment,bundle)
                             }else {
                                 findNavController().navigate(R.id.action_passwordFragment_to_hiddenNoteFragment)
@@ -73,7 +74,7 @@ class PasswordFragment : Fragment() {
             }
             else{
                 passcodeType = PasscodeView.PasscodeViewType.TYPE_CHECK_PASSCODE
-                localPasscode = localKeyStorage.getValue(LocalKeyStorage.passcode).toString()
+                localPasscode = localKeyStorage.getPasscodeValue(LocalKeyStorage.passcode)
                 listener = object : PasscodeView.PasscodeViewListener{
                     override fun onFail() {
                         //Toast.makeText(context,"Please enter the correct passcode",Toast.LENGTH_SHORT).show()

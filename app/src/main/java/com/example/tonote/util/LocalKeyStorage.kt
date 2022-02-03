@@ -21,8 +21,18 @@ class LocalKeyStorage(context: Context) {
         editor?.apply()
     }
 
+    fun savePasscodeValue(key: String, value: String) {
+        val editor = prefs?.edit()
+        editor?.putString(key, value)
+        editor?.apply()
+    }
+
     fun getValue(key: String): Int? {
-        return prefs?.getInt(key,0)
+        return prefs?.getInt(key, 0)
+    }
+
+    fun getPasscodeValue(key: String): String? {
+        return prefs?.getString(key, null)
     }
 
     fun deleteValue(key: String) {

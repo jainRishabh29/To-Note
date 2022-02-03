@@ -74,12 +74,11 @@ class OpenNoteFragment : Fragment(), ColorListAdapter.IColorListAdapter {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.isHidden -> {
-                    if (localKeyStorage.getValue(LocalKeyStorage.passcode) != 0) {
+                    if (localKeyStorage.getPasscodeValue(LocalKeyStorage.passcode) != null) {
                         it.isChecked = !it.isChecked
                         isNoteHidden = !isNoteHidden
                     } else {
                         // tell the user to set the password
-                        Toast.makeText(context, "Coming Soon..", Toast.LENGTH_SHORT).show()
                         MaterialAlertDialogBuilder(requireContext())
                             .setTitle(resources.getString(R.string.title))
                             .setMessage(resources.getString(R.string.supporting_text))

@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item
-        android:id="@+id/searchIcon"
-        android:title="Search"
-        app:showAsAction="always|collapseActionView"
-        android:icon="@drawable/ic_baseline_search_24"
-        app:actionViewClass="androidx.appcompat.widget.SearchView" />
-
     <group android:id="@+id/menuGroup" android:checkableBehavior="single">
         <item android:id="@+id/dateCreatedDesc"
             android:title="Date Created(Descend)"
@@ -27,4 +20,12 @@
             android:title="Date Edited(Ascend)"
             app:showAsAction="never"/>
     </group>
+
+    <item
+        android:id="@+id/searchIcon"
+        android:title="Search"
+        app:showAsAction="always|collapseActionView"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
 </menu>
