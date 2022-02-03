@@ -133,8 +133,16 @@ class OpenNoteFragment : Fragment(), ColorListAdapter.IColorListAdapter {
                             contentOfNote[5],
                             contentOfNote[6].toBoolean(),
                         )
-                        viewModel.deleteNote(note)
-                        findNavController().navigate(R.id.action_openNoteFragment_to_mainFragment)
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle("Delete")
+                            .setMessage("Are you sure you want to delete note? ")
+                            .setNeutralButton(resources.getString(R.string.cancel)) { dialog, which ->
+                                // Respond to neutral button press
+                            }
+                            .setPositiveButton("YES"){dialog, which ->
+                                viewModel.deleteNote(note)
+                                findNavController().navigate(R.id.action_openNoteFragment_to_mainFragment)
+                            }.show()
                     }
                     true
                 }

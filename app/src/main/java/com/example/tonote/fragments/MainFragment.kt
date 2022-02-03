@@ -36,6 +36,7 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.*
 import com.example.tonote.util.LocalKeyStorage
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
@@ -84,7 +85,15 @@ class MainFragment : Fragment(), NoteRVAdapter.INoteRVAdapter {
     }
 
     override fun onDeleteItemClicked(notes: Notes) {
-        viewModel.deleteNote(notes)
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Delete")
+            .setMessage("Are you sure you want to delete note? ")
+            .setNeutralButton(resources.getString(R.string.cancel)) { dialog, which ->
+                // Respond to neutral button press
+            }
+            .setPositiveButton("YES"){dialog, which ->
+                viewModel.deleteNote(notes)
+            }.show()
     }
 
     override fun onItemClicked(notes: Notes) {
