@@ -69,6 +69,8 @@ dependencies {
     implementation 'com.airbnb.android:lottie:4.1.0'
     // neumorphism
     implementation 'com.github.fornewid:neumorphism:0.2.1'
+    //customDialog
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
 
     implementation("com.google.android.gms:play-services-oss-licenses:17.0.0")
 

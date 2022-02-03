@@ -12,6 +12,7 @@ class LocalKeyStorage(context: Context) {
     companion object {
         const val sortNumber = "SortNumber"
         const val passcode = "passcode"
+        const val isFromOtherFragment = "isFromOtherFragment"
     }
 
     fun saveValue(key: String, value: Int) {

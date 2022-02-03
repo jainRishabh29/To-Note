@@ -5,16 +5,20 @@
       <map>
         <entry key="..\:/android/ToNote/app/src/main/res/drawable-v24/ic_baseline_switch_left_24.xml" value="0.25435897435897437" />
         <entry key="..\:/android/ToNote/app/src/main/res/drawable/cursor.xml" value="0.25435897435897437" />
+        <entry key="..\:/android/ToNote/app/src/main/res/drawable/custom_star.xml" value="0.25435897435897437" />
         <entry key="..\:/android/ToNote/app/src/main/res/drawable/ic_back_button.xml" value="0.25435897435897437" />
         <entry key="..\:/android/ToNote/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.2222222222222222" />
         <entry key="..\:/android/ToNote/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.25435897435897437" />
+        <entry key="..\:/android/ToNote/app/src/main/res/drawable/round_background.xml" value="0.25435897435897437" />
         <entry key="..\:/android/ToNote/app/src/main/res/drawable/round_button.xml" value="0.25833333333333336" />
         <entry key="..\:/android/ToNote/app/src/main/res/drawable/test.xml" value="0.2537037037037037" />
         <entry key="..\:/android/ToNote/app/src/main/res/font/roboto.xml" value="0.2682051282051282" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/activity_main.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/color_chooser_item_view.xml" value="0.2421875" />
+        <entry key="..\:/android/ToNote/app/src/main/res/layout/details_dialog.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_fab.xml" value="0.2421875" />
+        <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_feedback.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_hidden_note.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_main.xml" value="0.2421875" />
         <entry key="..\:/android/ToNote/app/src/main/res/layout/fragment_open_note.xml" value="0.2421875" />

@@ -1,5 +1,7 @@
 package com.example.tonote.fragments
 
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,6 +17,7 @@ import com.example.tonote.databinding.FragmentPasswordBinding
 import com.example.tonote.util.LocalKeyStorage
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.hanks.passcodeview.PasscodeView
+import java.util.ArrayList
 
 
 class PasswordFragment : Fragment() {
@@ -45,7 +48,24 @@ class PasswordFragment : Fragment() {
                             localKeyStorage.saveValue(LocalKeyStorage.passcode,number.toInt())
                             //Toast.makeText(context,"Success to",Toast.LENGTH_SHORT).show()
                             // Now navigate to another fragment
-                            findNavController().navigate(R.id.action_passwordFragment_to_hiddenNoteFragment)
+                            if(localKeyStorage.getValue(LocalKeyStorage.isFromOtherFragment)==1){
+                                val contentOfNote = arguments?.getStringArrayList("Content")
+                                val contentArray: ArrayList<String> = ArrayList()
+                                val bundle = Bundle()
+                                if(!contentOfNote.isNullOrEmpty()){
+                                    contentArray.add(0, contentOfNote[0])
+                                    contentArray.add(1, contentOfNote[1])
+                                    contentArray.add(2, contentOfNote[2])
+                                    contentArray.add(3, contentOfNote[3])
+                                    contentArray.add(4, contentOfNote[4])
+                                    contentArray.add(5, contentOfNote[5])
+                                    contentArray.add(6, "true")
+                                }
+                                bundle.putStringArrayList("Content", contentArray)
+                                findNavController().navigate(R.id.action_passwordFragment_to_openNoteFragment,bundle)
+                            }else {
+                                findNavController().navigate(R.id.action_passwordFragment_to_hiddenNoteFragment)
+                            }
                         }
                     }
 

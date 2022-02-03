@@ -5,7 +5,7 @@
     <group android:id="@+id/grp1">
         <item
             android:id="@+id/details"
-            android:title="Details"
+            android:title="Show details"
             app:showAsAction="never" />
 
         <item

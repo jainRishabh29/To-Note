@@ -54,6 +54,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.rateUs -> {
+                    navController.navigate(R.id.action_mainFragment_to_feedbackFragment)
+                    drawerLayout.close()
                     Log.d("batao" , "clicked2")
                     true
                 }
